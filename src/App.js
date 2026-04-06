@@ -16,7 +16,7 @@ import Go from './pages/Go';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/al-otaiba-express">
       <div className="min-h-screen">
         <Navbar />
         <Routes>
