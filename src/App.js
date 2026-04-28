@@ -13,6 +13,7 @@ import RealEstate from './pages/RealEstate';
 import GermanSupplements from './pages/GermanSupplements';
 import GermanHealthHub from './pages/GermanHealthHub';
 import Go from './pages/Go';
+import MultiBrands from './pages/MultiBrands';
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
           <Route path="/german-supplements" element={<GermanSupplements />} />
           <Route path="/german-health-hub" element={<GermanHealthHub />} />
           <Route path="/go" element={<Go />} />
+          <Route path="/multibrands" element={<MultiBrands />} />
+
         </Routes>
         <Footer />
       </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Package, Coffee, Droplet, Leaf } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 function Brands() {
   const [imageErrors, setImageErrors] = useState({});
@@ -12,8 +13,9 @@ function Brands() {
       description: "UK brand offering quality products including toothbrushes, toothpaste, razor blades, lip balm, and first aid adhesive strips.",
       url: "https://multibrands.co.uk/",
       category: "Personal Care",
-      logoUrl: "https://images.squarespace-cdn.com/content/v1/62c6e28e77ccf620da80ecc8/edb7fefb-7214-4f0a-8e84-78d83c5ea12f/Multibrands-Logo-White-01.png?format=1500w",
-      fallbackIcon: Package
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/b/bb/Multibrandslogo.png",
+      fallbackIcon: Package,
+      internalLink: true  // Add this flag to identify internal link
     },
     {
       id: 2,
@@ -22,7 +24,8 @@ function Brands() {
       url: "https://chilla.com/",
       category: "Beverages",
       logoUrl: "https://chilla.com/cdn/shop/files/chilla.svg?v=1748597172&width=320",
-      fallbackIcon: Droplet
+      fallbackIcon: Droplet,
+      internalLink: false
     },
     {
       id: 3,
@@ -31,7 +34,8 @@ function Brands() {
       url: "https://dallaspresso.bh/",
       category: "Coffee",
       logoUrl: "https://dallaspresso.bh/wp-content/uploads/2022/01/Logo_Normal_Black_800.png",
-      fallbackIcon: Coffee
+      fallbackIcon: Coffee,
+      internalLink: false
     },
     {
       id: 4,
@@ -40,7 +44,8 @@ function Brands() {
       url: "https://happyearthorganic.com/",
       category: "Organic Foods",
       logoUrl: "https://happyearthorganic.com/cdn/shop/files/HEO_LOGO-_BLK_TM.png?v=1760343584&width=270",
-      fallbackIcon: Leaf
+      fallbackIcon: Leaf,
+      internalLink: false
     }
   ];
 
@@ -121,17 +126,27 @@ function Brands() {
                     {brand.description}
                   </p>
                   
-                  {/* Visit Button - Centered */}
+                  {/* Button - Conditional rendering for internal vs external link */}
                   <div className="flex justify-center">
-                    <a
-                      href={brand.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-200 group-hover:gap-3"
-                    >
-                      Visit Website
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
+                    {brand.internalLink ? (
+                      <Link
+                        to="/multibrands"
+                        className="inline-flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-200 group-hover:gap-3"
+                      >
+                        View Products
+                        <ExternalLink className="w-4 h-4" />
+                      </Link>
+                    ) : (
+                      <a
+                        href={brand.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-200 group-hover:gap-3"
+                      >
+                        Visit Website
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>
