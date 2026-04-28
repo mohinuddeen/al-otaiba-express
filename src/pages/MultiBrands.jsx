@@ -702,7 +702,7 @@ function MultiBrands() {
                                         </div>
 
                                         {/* Barcode Display */}
-                                        <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-5 mb-6 text-center">
+                                        {/* <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-5 mb-6 text-center">
                                             <p className="text-sm text-gray-600 mb-2">Scan Barcode</p>
                                             <div className="font-mono text-xl tracking-wider text-navy-900 font-bold">
                                                 {selectedProduct.barcode}
@@ -710,10 +710,10 @@ function MultiBrands() {
                                             <div className="mt-2 w-48 h-12 bg-white mx-auto rounded flex items-center justify-center text-xs text-gray-400">
                                                 [Barcode Image Placeholder]
                                             </div>
-                                        </div>
+                                        </div> */}
 
                                         {/* CTA Buttons */}
-                                        <div className="space-y-3">
+                                        {/* <div className="space-y-3">
                                             <a
                                                 href={`https://www.google.com/search?q=${selectedProduct.barcode}`}
                                                 target="_blank"
@@ -734,10 +734,10 @@ function MultiBrands() {
                                                 Check on Noon
                                                 <ExternalLink className="w-4 h-4" />
                                             </a>
-                                        </div>
+                                        </div> */}
 
                                         {/* Trust Badges */}
-                                        <div className="mt-6 flex justify-center gap-4 text-xs text-gray-500">
+                                        {/* <div className="mt-6 flex justify-center gap-4 text-xs text-gray-500">
                                             <div className="flex items-center gap-1">
                                                 <Shield className="w-3 h-3" />
                                                 <span>Genuine Products</span>
@@ -750,7 +750,7 @@ function MultiBrands() {
                                                 <Star className="w-3 h-3" />
                                                 <span>Best Prices</span>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                             </div>
