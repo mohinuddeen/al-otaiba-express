@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,16 +16,35 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavigation = (path, sectionId) => {
+    if (location.pathname !== '/') {
+      // If not on home page, navigate to home page first
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // If on home page, just scroll to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    setIsOpen(false);
+  };
+
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Brands', path: '/#brands' },
-    { name: 'Subsidiaries', path: '/#subsidiaries' },
-    { name: 'About', path: '/#about' },
-    { name: 'Contact', path: '/#contact' },
+    { name: 'Home', path: '/', sectionId: 'home' },
+    { name: 'Brands', path: '/', sectionId: 'brands' },
+    { name: 'Subsidiaries', path: '/', sectionId: 'subsidiaries' },
+    { name: 'About', path: '/', sectionId: 'about' },
+    { name: 'Contact', path: '/', sectionId: 'contact' },
   ];
 
   const isActive = (path) => {
-    if (path === '/') return location.pathname === '/';
     return location.pathname === path;
   };
 
@@ -39,31 +59,34 @@ function Navbar() {
             <span className="text-white"> Holding</span>
           </Link>
 
+          {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.name}
-                href={link.path}
+                onClick={() => handleNavigation(link.path, link.sectionId)}
                 className={`transition-colors duration-200 font-medium ${
-                  isActive(link.path) 
+                  isActive(link.path) && location.pathname === '/' && window.scrollY === 0
                     ? 'text-blue-400' 
                     : 'text-white/90 hover:text-blue-400'
                 }`}
               >
                 {link.name}
-              </a>
+              </button>
             ))}
           </div>
 
+          {/* CTA Button */}
           <div className="hidden md:block">
-            <Link
-              to="/#contact"
+            <button
+              onClick={() => handleNavigation('/', 'contact')}
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105"
             >
               Get in Touch
-            </Link>
+            </button>
           </div>
 
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden text-white focus:outline-none"
@@ -72,25 +95,24 @@ function Navbar() {
           </button>
         </div>
 
+        {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-3 animate-fade-in">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.name}
-                href={link.path}
-                onClick={() => setIsOpen(false)}
-                className="block text-white/90 hover:text-blue-400 transition-colors py-2"
+                onClick={() => handleNavigation(link.path, link.sectionId)}
+                className="block w-full text-left text-white/90 hover:text-blue-400 transition-colors py-2"
               >
                 {link.name}
-              </a>
+              </button>
             ))}
-            <Link
-              to="/#contact"
-              onClick={() => setIsOpen(false)}
-              className="block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold text-center transition"
+            <button
+              onClick={() => handleNavigation('/', 'contact')}
+              className="block w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold text-center transition"
             >
               Get in Touch
-            </Link>
+            </button>
           </div>
         )}
       </div>
