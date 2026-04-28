@@ -14,6 +14,9 @@ import GermanSupplements from './pages/GermanSupplements';
 import GermanHealthHub from './pages/GermanHealthHub';
 import Go from './pages/Go';
 import MultiBrands from './pages/MultiBrands';
+import Dallaspresso from './pages/Dallaspresso';
+import Swoosh from './pages/Swoosh';
+
 
 function App() {
   return (
@@ -38,6 +41,8 @@ function App() {
           <Route path="/german-health-hub" element={<GermanHealthHub />} />
           <Route path="/go" element={<Go />} />
           <Route path="/multibrands" element={<MultiBrands />} />
+          <Route path="/dallaspresso" element={<Dallaspresso />} />
+          <Route path="/swoosh" element={<Swoosh />} />
 
         </Routes>
         <Footer />

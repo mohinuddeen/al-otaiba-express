@@ -11,11 +11,12 @@ function Brands() {
       id: 1,
       name: "MultiBrands",
       description: "UK brand offering quality products including toothbrushes, toothpaste, razor blades, lip balm, and first aid adhesive strips.",
-      url: "https://multibrands.co.uk/",
+      url: "/multibrands",  // Changed to internal route
       category: "Personal Care",
       logoUrl: "https://upload.wikimedia.org/wikipedia/commons/b/bb/Multibrandslogo.png",
       fallbackIcon: Package,
-      internalLink: true  // Add this flag to identify internal link
+      internalLink: true,
+      buttonText: "View Products"  // Custom button text
     },
     {
       id: 2,
@@ -25,27 +26,30 @@ function Brands() {
       category: "Beverages",
       logoUrl: "https://chilla.com/cdn/shop/files/chilla.svg?v=1748597172&width=320",
       fallbackIcon: Droplet,
-      internalLink: false
+      internalLink: false,
+      buttonText: "Visit Website"
     },
     {
       id: 3,
       name: "Dallaspresso",
       description: "Premium coffee brand from Bahrain offering exceptional coffee experiences.",
-      url: "https://dallaspresso.bh/",
+      url: "/dallaspresso",  // Internal route
       category: "Coffee",
       logoUrl: "https://dallaspresso.bh/wp-content/uploads/2022/01/Logo_Normal_Black_800.png",
       fallbackIcon: Coffee,
-      internalLink: false
+      internalLink: true,
+      buttonText: "View Products"
     },
     {
       id: 4,
-      name: "Happy Earth Organic",
-      description: "Premium organic products including coconut water and different types of premium dates.",
-      url: "https://happyearthorganic.com/",
-      category: "Organic Foods",
-      logoUrl: "https://happyearthorganic.com/cdn/shop/files/HEO_LOGO-_BLK_TM.png?v=1760343584&width=270",
+      name: "Swoosh",
+      description: "Premium organic coconut water - 100% natural and refreshing.",
+      url: "/swoosh",  // Changed to internal route
+      category: "Beverages",
+      logoUrl: "https://swooshbeverages.com/wp-content/uploads/2025/08/cropped-Swoosh-Logo-1-scaled-1-600x200.png",
       fallbackIcon: Leaf,
-      internalLink: false
+      internalLink: true,  // Changed to true
+      buttonText: "View Products"  // Changed button text
     }
   ];
 
@@ -72,11 +76,11 @@ function Brands() {
             Discover our diverse portfolio of international brands bringing quality products to consumers worldwide
           </p>
         </motion.div>
-        
+
         <div className="grid md:grid-cols-2 gap-8">
           {brands.map((brand, index) => {
             const FallbackIcon = brand.fallbackIcon;
-            
+
             return (
               <motion.div
                 key={brand.id}
@@ -91,14 +95,14 @@ function Brands() {
                 <div className="absolute inset-0 opacity-5">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-600 to-navy-900 rounded-full filter blur-3xl"></div>
                 </div>
-                
+
                 <div className="relative p-8">
                   {/* Logo Section - Centered for better display */}
                   <div className="flex justify-center mb-6">
                     <div className="w-32 h-32 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl flex items-center justify-center p-4 shadow-md group-hover:shadow-xl transition-all duration-300">
                       {!imageErrors[brand.id] ? (
-                        <img 
-                          src={brand.logoUrl} 
+                        <img
+                          src={brand.logoUrl}
                           alt={`${brand.name} logo`}
                           className="w-full h-full object-contain"
                           onError={() => handleImageError(brand.id)}
@@ -108,32 +112,32 @@ function Brands() {
                       )}
                     </div>
                   </div>
-                  
+
                   {/* Category Badge */}
                   <div className="flex justify-center mb-4">
                     <span className="bg-gradient-to-r from-blue-600 to-navy-900 text-white px-4 py-1 rounded-full text-sm font-semibold">
                       {brand.category}
                     </span>
                   </div>
-                  
+
                   {/* Brand Name */}
                   <h3 className="text-2xl font-bold text-center text-navy-900 mb-4 group-hover:text-blue-600 transition">
                     {brand.name}
                   </h3>
-                  
+
                   {/* Description */}
                   <p className="text-gray-700 mb-6 leading-relaxed text-center">
                     {brand.description}
                   </p>
-                  
+
                   {/* Button - Conditional rendering for internal vs external link */}
                   <div className="flex justify-center">
                     {brand.internalLink ? (
                       <Link
-                        to="/multibrands"
+                        to={brand.url}
                         className="inline-flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-200 group-hover:gap-3"
                       >
-                        View Products
+                        {brand.buttonText}
                         <ExternalLink className="w-4 h-4" />
                       </Link>
                     ) : (
@@ -143,7 +147,7 @@ function Brands() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-200 group-hover:gap-3"
                       >
-                        Visit Website
+                        {brand.buttonText}
                         <ExternalLink className="w-4 h-4" />
                       </a>
                     )}
