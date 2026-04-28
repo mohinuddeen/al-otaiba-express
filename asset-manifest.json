@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/al-otaiba-express/static/css/main.f5314d12.css",
-    "main.js": "/al-otaiba-express/static/js/main.02291c7b.js",
+    "main.css": "/al-otaiba-express/static/css/main.f00b9211.css",
+    "main.js": "/al-otaiba-express/static/js/main.85e7a4f6.js",
     "static/js/453.07514cb5.chunk.js": "/al-otaiba-express/static/js/453.07514cb5.chunk.js",
     "index.html": "/al-otaiba-express/index.html",
-    "main.f5314d12.css.map": "/al-otaiba-express/static/css/main.f5314d12.css.map",
-    "main.02291c7b.js.map": "/al-otaiba-express/static/js/main.02291c7b.js.map",
+    "main.f00b9211.css.map": "/al-otaiba-express/static/css/main.f00b9211.css.map",
+    "main.85e7a4f6.js.map": "/al-otaiba-express/static/js/main.85e7a4f6.js.map",
     "453.07514cb5.chunk.js.map": "/al-otaiba-express/static/js/453.07514cb5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f5314d12.css",
-    "static/js/main.02291c7b.js"
+    "static/css/main.f00b9211.css",
+    "static/js/main.85e7a4f6.js"
   ]
 }
