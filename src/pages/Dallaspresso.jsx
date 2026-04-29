@@ -384,16 +384,16 @@ function Dallaspresso() {
                       onClick={() => openProductModal(product, category.category_name)}
                     >
                       {/* Badge */}
-                      <div className="absolute top-3 left-3 z-10">
+                      {/* <div className="absolute top-3 left-3 z-10">
                         <span className={`bg-gradient-to-r ${category.color} text-white text-xs px-2 py-1 rounded-full`}>
                           {product.quantity} Packs
                         </span>
-                      </div>
+                      </div> */}
                       
                       {/* Favorite Button */}
-                      <button className="absolute top-3 right-3 z-10 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                      {/* <button className="absolute top-3 right-3 z-10 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                         <Heart className="w-4 h-4 text-gray-600 hover:text-red-500 transition" />
-                      </button>
+                      </button> */}
                       
                       {/* Product Image */}
                       <div className="relative h-56 bg-gradient-to-br from-amber-50 to-orange-50 overflow-hidden">
@@ -552,10 +552,10 @@ function Dallaspresso() {
                           <span className="font-medium">Size:</span>
                           <span className="bg-amber-50 text-amber-700 px-2 py-1 rounded-full text-sm">{selectedProduct.size}</span>
                         </div>
-                        <div className="flex justify-between py-2 border-b border-gray-100">
+                        {/* <div className="flex justify-between py-2 border-b border-gray-100">
                           <span className="font-medium">Pack Quantity:</span>
                           <span>{selectedProduct.quantity} packs</span>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
 

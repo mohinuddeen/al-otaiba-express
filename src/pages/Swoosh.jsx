@@ -180,17 +180,17 @@ function Swoosh() {
                   onClick={() => openProductModal(product)}
                 >
                   {/* Badge */}
-                  <div className="absolute top-3 left-3 z-10">
+                  {/* <div className="absolute top-3 left-3 z-10">
                     <span className="bg-gradient-to-r from-green-600 to-emerald-600 text-white text-xs px-2 py-1 rounded-full">
                       {product.quantity} Packs
                     </span>
-                  </div>
+                  </div> */}
                   
                   {/* Favorite Button */}
-                  <button className="absolute top-3 right-3 z-10 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                  {/* <button className="absolute top-3 right-3 z-10 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                     <Heart className="w-4 h-4 text-gray-600 hover:text-red-500 transition" />
                   </button>
-                  
+                   */}
                   {/* Product Image */}
                   <div className="relative h-56 bg-gradient-to-br from-green-50 to-emerald-50 overflow-hidden">
                     <img 
@@ -362,10 +362,10 @@ function Swoosh() {
                           <span className="font-medium">Size:</span>
                           <span className="bg-green-50 text-green-700 px-2 py-1 rounded-full text-sm">{selectedProduct.size}</span>
                         </div>
-                        <div className="flex justify-between py-2 border-b border-gray-100">
+                        {/* <div className="flex justify-between py-2 border-b border-gray-100">
                           <span className="font-medium">Pack Quantity:</span>
                           <span>{selectedProduct.quantity} packs</span>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
 
