@@ -55,10 +55,10 @@ function Footer() {
                 <AArrowDown className="w-4 h-4" /> Dubai, UAE
               </li>
               <li className="flex items-center gap-2 text-gray-300">
-                <AArrowDown className="w-4 h-4" /> +971 XX XXX XXXX
+                <AArrowDown className="w-4 h-4" /> +971 52 858 1133
               </li>
               <li className="flex items-center gap-2 text-gray-300">
-                <AArrowDown className="w-4 h-4" /> info@aoeholding.ae
+                <AArrowDown className="w-4 h-4" /> info@alotaiba.com
               </li>
             </ul>
           </div>

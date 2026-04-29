@@ -66,7 +66,7 @@ function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-navy-900">Phone</h4>
-                    <p className="text-gray-600">+971 XX XXX XXXX</p>
+                    <p className="text-gray-600">+971 52 858 1133</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -75,7 +75,7 @@ function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-navy-900">Email</h4>
-                    <p className="text-gray-600">info@aoeholding.ae</p>
+                    <p className="text-gray-600">info@alotaiba.com</p>
                   </div>
                 </div>
               </div>

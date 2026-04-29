@@ -32,7 +32,7 @@ function About() {
             <span className="gradient-text">About AOE Holding</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Based in Dubai, UAE, Al Otaiba Express (AOE) is a dynamic holding company committed to excellence across multiple industries
+            Al Otaiba Express Trading is a trusted B2B retail partner dedicated to supplying businesses with quality products, competitive pricing, and efficient service. Built for business and driven by trust, we focus on consistency, reliability, and speed to keep our clients’ operations running smoothly. With a commitment to long-term partnerships, we deliver practical solutions that support growth and everyday business success.
           </p>
         </motion.div>
 

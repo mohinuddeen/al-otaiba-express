@@ -43,8 +43,7 @@ function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto"
           >
-            A diversified holding company bringing excellence across Real Estate, 
-            E-commerce, Healthcare, and Consumer Goods
+            Built for Business. Driven by Trust. Reliable products, efficient service, and a strong commitment to honesty and long-term partnership
           </motion.p>
 
           <motion.div
