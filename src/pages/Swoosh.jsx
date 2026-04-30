@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Eye, ExternalLink, Search, ShoppingBag, Heart, Shield, Truck, Star, Droplet, Award, Leaf, TrendingUp } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Eye, ExternalLink, Search, ShoppingBag, Heart, Shield, Truck, Star, Droplet, Award, Leaf, TrendingUp, FileText } from 'lucide-react';
 
 function Swoosh() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
+
+  // Brand Presentation Link
+  const presentationLink = "https://drive.google.com/file/d/1yot2o-sCB5XMtzDD6phT0G5FwFohyF14/view?usp=drive_link";
 
   // Swoosh Products Data
   const productsData = [
@@ -88,12 +91,31 @@ function Swoosh() {
             <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-green-200 bg-clip-text text-transparent">
               Swoosh
             </h1>
-            <p className="text-xl text-green-100 max-w-2xl mx-auto mb-8">
+            <p className="text-xl text-green-100 max-w-2xl mx-auto mb-6">
               100% Natural Coconut Water - Pure, Refreshing, and Hydrating
             </p>
             
+            {/* Presentation Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex justify-center mb-8"
+            >
+              <a
+                href={presentationLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 border border-white/30"
+              >
+                <FileText className="w-4 h-4" />
+                View Brand Presentation
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </motion.div>
+            
             {/* Stats */}
-            <div className="flex justify-center gap-8 mb-8">
+            <div className="flex justify-center gap-8">
               <div className="text-center">
                 <div className="text-3xl font-bold">{totalProducts}</div>
                 <div className="text-sm text-green-200">Products</div>
@@ -179,18 +201,6 @@ function Swoosh() {
                   className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer"
                   onClick={() => openProductModal(product)}
                 >
-                  {/* Badge */}
-                  {/* <div className="absolute top-3 left-3 z-10">
-                    <span className="bg-gradient-to-r from-green-600 to-emerald-600 text-white text-xs px-2 py-1 rounded-full">
-                      {product.quantity} Packs
-                    </span>
-                  </div> */}
-                  
-                  {/* Favorite Button */}
-                  {/* <button className="absolute top-3 right-3 z-10 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Heart className="w-4 h-4 text-gray-600 hover:text-red-500 transition" />
-                  </button>
-                   */}
                   {/* Product Image */}
                   <div className="relative h-56 bg-gradient-to-br from-green-50 to-emerald-50 overflow-hidden">
                     <img 
@@ -362,10 +372,6 @@ function Swoosh() {
                           <span className="font-medium">Size:</span>
                           <span className="bg-green-50 text-green-700 px-2 py-1 rounded-full text-sm">{selectedProduct.size}</span>
                         </div>
-                        {/* <div className="flex justify-between py-2 border-b border-gray-100">
-                          <span className="font-medium">Pack Quantity:</span>
-                          <span>{selectedProduct.quantity} packs</span>
-                        </div> */}
                       </div>
                     </div>
 
@@ -373,54 +379,6 @@ function Swoosh() {
                     <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-5 mb-6">
                       <p className="text-sm text-gray-700">{selectedProduct.description}</p>
                     </div>
-
-                    {/* Barcode Display */}
-                    {/* <div className="bg-gray-50 rounded-xl p-5 mb-6 text-center">
-                      <p className="text-sm text-gray-600 mb-2">Scan Barcode</p>
-                      <div className="font-mono text-xl tracking-wider text-navy-900 font-bold">
-                        {selectedProduct.barcode}
-                      </div>
-                    </div> */}
-
-                    {/* CTA Buttons */}
-                    {/* <div className="space-y-3">
-                      <a
-                        href={`https://www.google.com/search?q=${selectedProduct.barcode}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3.5 rounded-xl font-semibold hover:shadow-lg transition-all duration-200 transform hover:scale-[1.02]"
-                      >
-                        <Search className="w-4 h-4" />
-                        Find on Google
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                      <a
-                        href={`https://www.noon.com/search/?q=${selectedProduct.sku}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 w-full border-2 border-green-600 text-green-600 py-3.5 rounded-xl font-semibold hover:bg-green-50 transition-all duration-200"
-                      >
-                        <ShoppingBag className="w-4 h-4" />
-                        Check on Noon
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </div> */}
-
-                    {/* Trust Badges */}
-                    {/* <div className="mt-6 flex justify-center gap-4 text-xs text-gray-500">
-                      <div className="flex items-center gap-1">
-                        <Shield className="w-3 h-3" />
-                        <span>100% Natural</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Truck className="w-3 h-3" />
-                        <span>Fresh Stock</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Star className="w-3 h-3" />
-                        <span>Best Price</span>
-                      </div>
-                    </div> */}
                   </div>
                 </div>
               </div>

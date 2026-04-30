@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Eye, ExternalLink, Search, ShoppingBag, Heart, Shield, Truck, Star, Package } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Eye, ExternalLink, Search, ShoppingBag, Heart, Shield, Truck, Star, Package, FileText } from 'lucide-react';
 
 function MultiBrands() {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedBrand, setSelectedBrand] = useState('All');
+
+    // Brand Presentation Links
+    const brandPresentations = {
+        "Ultraloc": "https://drive.google.com/file/d/1UfBWw3ArUBKlGWkuoc6oThseDsHMzQXD/view?usp=drive_link",
+        "Lipice": "https://drive.google.com/file/d/14Fe5_Qj1DVl098lHydg6spb18nK41ioD/view?usp=drive_link",
+        "Power Edge": "https://drive.google.com/file/d/1nWS6Ijxktgf2HnVFWio8hPwCEceS8QvR/view?usp=drive_link",
+        "Duraplast": "https://drive.google.com/file/d/1PrBMOihUUCFsEg-nnS4V6bstEvmUGxBm/view?usp=drive_link",
+        "Fluoridine": "https://drive.google.com/file/d/1G7sVANRbgjTeElV3ysbqJd-g115hADup/view?usp=drive_link"
+    };
 
     const brandsData = {
         "brands": [
@@ -43,7 +52,7 @@ function MultiBrands() {
             {
                 "brand_name": "Lipice",
                 "logo": "https://images.squarespace-cdn.com/content/v1/62c6e28e77ccf620da80ecc8/1657702192070-JFIMQEA6MZL93IPKQ6OF/Lipice.jpg?format=2500w",
-                "description": "Natural lip care for soft, healthy lips",
+                "description": "Natural lip care for soft, healthy lips. Created using nature's finest ingredients.",
                 "color": "from-pink-500 to-rose-500",
                 "products": [
                     {
@@ -158,7 +167,7 @@ function MultiBrands() {
             {
                 "brand_name": "Duraplast",
                 "logo": "https://images.squarespace-cdn.com/content/v1/62c6e28e77ccf620da80ecc8/d53f9cb1-e13c-42a9-825d-1ee4216967d6/Duraplast.jpg?format=2500w",
-                "description": "Durable plastic products for everyday use",
+                "description": "Premium quality plasters and adhesive bandages for everyday protection",
                 "color": "from-green-500 to-emerald-500",
                 "products": [
                     {
@@ -232,8 +241,8 @@ function MultiBrands() {
             {
                 "brand_name": "Fluoridine",
                 "logo": "https://images.squarespace-cdn.com/content/v1/62c6e28e77ccf620da80ecc8/1657702191405-Y6GU1287SNZ1ZG5K3WG5/Flourodine.jpg?format=2500w",
-                "description": "products for everyday use",
-                "color": "from-green-500 to-emerald-500",
+                "description": "Advanced oral care products for complete dental hygiene",
+                "color": "from-teal-500 to-cyan-500",
                 "products": [
                     {
                         "sku": "TFLFA100",
@@ -336,11 +345,9 @@ function MultiBrands() {
                     }
                 ]
             }
-
         ]
     };
 
-    // Get unique brands for filter
     // Get unique brands for filter
     const brandNames = ['All', ...brandsData.brands.map(b => b.brand_name)];
 
@@ -477,6 +484,8 @@ function MultiBrands() {
 
                         if (filteredProducts.length === 0) return null;
 
+                        const presentationLink = brandPresentations[brand.brand_name];
+
                         return (
                             <motion.div
                                 key={brand.brand_name}
@@ -485,7 +494,7 @@ function MultiBrands() {
                                 transition={{ duration: 0.5, delay: brandIndex * 0.1 }}
                                 className="mb-16"
                             >
-                                {/* Brand Header - With Logo */}
+                                {/* Brand Header - With Logo and Presentation Button */}
                                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pb-4 border-b-2 border-gray-100">
                                     <div className="flex items-center gap-4 mb-4 md:mb-0">
                                         {/* Brand Logo */}
@@ -501,25 +510,29 @@ function MultiBrands() {
                                             />
                                         </div>
                                         <div>
-                                            <div className="flex items-center gap-2">
+                                            <div className="flex items-center gap-2 flex-wrap">
                                                 <h2 className="text-3xl font-bold text-navy-900">{brand.brand_name}</h2>
                                                 <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">
                                                     {filteredProducts.length} Products
                                                 </span>
+                                                {/* Presentation Button - Next to brand name */}
+                                                {presentationLink && (
+                                                    <a
+                                                        href={presentationLink}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="inline-flex items-center gap-1.5 bg-gradient-to-r from-blue-600 to-navy-900 text-white text-xs px-3 py-1.5 rounded-full hover:shadow-md transition-all duration-200 ml-2"
+                                                        onClick={(e) => e.stopPropagation()}
+                                                    >
+                                                        <FileText className="w-3 h-3" />
+                                                        Brand Presentation
+                                                        <ExternalLink className="w-2.5 h-2.5" />
+                                                    </a>
+                                                )}
                                             </div>
                                             <p className="text-gray-600 text-sm">{brand.description}</p>
                                         </div>
                                     </div>
-
-                                    {/* Optional: Secondary Logo (can remove if not needed) */}
-                                    {/* <div className="w-16 h-16 bg-white rounded-xl shadow-md flex items-center justify-center p-2 opacity-50">
-                    <img 
-                      src={brand.logo} 
-                      alt={brand.brand_name}
-                      className="w-full h-full object-contain"
-                      onError={(e) => e.target.style.display = 'none'}
-                    />
-                  </div> */}
                                 </div>
 
                                 {/* Products Grid */}
@@ -700,57 +713,6 @@ function MultiBrands() {
                                                 </div>
                                             </div>
                                         </div>
-
-                                        {/* Barcode Display */}
-                                        {/* <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-5 mb-6 text-center">
-                                            <p className="text-sm text-gray-600 mb-2">Scan Barcode</p>
-                                            <div className="font-mono text-xl tracking-wider text-navy-900 font-bold">
-                                                {selectedProduct.barcode}
-                                            </div>
-                                            <div className="mt-2 w-48 h-12 bg-white mx-auto rounded flex items-center justify-center text-xs text-gray-400">
-                                                [Barcode Image Placeholder]
-                                            </div>
-                                        </div> */}
-
-                                        {/* CTA Buttons */}
-                                        {/* <div className="space-y-3">
-                                            <a
-                                                href={`https://www.google.com/search?q=${selectedProduct.barcode}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3.5 rounded-xl font-semibold hover:shadow-lg transition-all duration-200 transform hover:scale-[1.02]"
-                                            >
-                                                <Search className="w-4 h-4" />
-                                                Find on Google
-                                                <ExternalLink className="w-4 h-4" />
-                                            </a>
-                                            <a
-                                                href={`https://www.noon.com/search/?q=${selectedProduct.sku}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center justify-center gap-2 w-full border-2 border-blue-600 text-blue-600 py-3.5 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-200"
-                                            >
-                                                <ShoppingBag className="w-4 h-4" />
-                                                Check on Noon
-                                                <ExternalLink className="w-4 h-4" />
-                                            </a>
-                                        </div> */}
-
-                                        {/* Trust Badges */}
-                                        {/* <div className="mt-6 flex justify-center gap-4 text-xs text-gray-500">
-                                            <div className="flex items-center gap-1">
-                                                <Shield className="w-3 h-3" />
-                                                <span>Genuine Products</span>
-                                            </div>
-                                            <div className="flex items-center gap-1">
-                                                <Truck className="w-3 h-3" />
-                                                <span>Fast Shipping</span>
-                                            </div>
-                                            <div className="flex items-center gap-1">
-                                                <Star className="w-3 h-3" />
-                                                <span>Best Prices</span>
-                                            </div>
-                                        </div> */}
                                     </div>
                                 </div>
                             </div>

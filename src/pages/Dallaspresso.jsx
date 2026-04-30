@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Eye, ExternalLink, Search, ShoppingBag, Heart, Shield, Truck, Star, Coffee, Sparkles, Award } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Eye, ExternalLink, Search, ShoppingBag, Heart, Shield, Truck, Star, Coffee, Sparkles, Award, FileText } from 'lucide-react';
 
 function Dallaspresso() {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -8,6 +8,7 @@ function Dallaspresso() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
+  const presentationLink = "https://drive.google.com/file/d/1Ygc9X-io08TG6wIQ_VGdkpXJmSgJ7dxR/view?usp=drive_link";
   // Dallaspresso Data
   const categoriesData = {
     "categories": [
@@ -246,7 +247,7 @@ function Dallaspresso() {
   const totalProducts = categoriesData.categories.reduce((acc, category) => acc + category.products.length, 0);
   const totalCategories = categoriesData.categories.length;
 
-  return (
+ return (
     <div className="pt-20 min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-white">
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-amber-800 via-orange-700 to-amber-900 text-white overflow-hidden">
@@ -271,8 +272,27 @@ function Dallaspresso() {
               Premium coffee capsules and Karak tea sachets for an authentic Middle Eastern coffee experience
             </p>
             
+            {/* View Presentation Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex justify-center mb-8"
+            >
+              <a
+                href={presentationLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 border border-white/30"
+              >
+                <FileText className="w-5 h-5" />
+                View Brand Presentation
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </motion.div>
+            
             {/* Stats */}
-            <div className="flex justify-center gap-8 mb-8">
+            <div className="flex justify-center gap-8">
               <div className="text-center">
                 <div className="text-3xl font-bold">{totalCategories}</div>
                 <div className="text-sm text-amber-200">Categories</div>
@@ -400,7 +420,7 @@ function Dallaspresso() {
                         <img 
                           src={product.images.front} 
                           alt={product.product_name}
-                          className="w-full h-full object-contain p-6 transform group-hover:scale-110 transition-transform duration-500"
+                          className="w-full h-full object-cover p-6 transform group-hover:scale-110 transition-transform duration-500"
                           onError={(e) => {
                             e.target.src = 'https://via.placeholder.com/300x200?text=Dallaspresso';
                           }}
